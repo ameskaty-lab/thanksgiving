@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Thanksgiving 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+:root {
+  --bg: #f2f4ef; --surface: #ffffff; --ink: #23271f; --muted: #646b5d; --line: #d9ded3;
+  --accent: #962d3c; --accent-soft: #f6e4e6; --gold: #8a6112; --gold-soft: #f5ecd7;
+  --yes: #2f6b3d; --yes-soft: #e1efe3; --no: #5f5f5f; --no-soft: #ececea;
+  --display: "Young Serif", Georgia, "Times New Roman", serif;
+  --body: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) { :root {
+  --bg: #161915; --surface: #20241e; --ink: #ebede5; --muted: #a3aa9a; --line: #353a31;
+  --accent: #e58593; --accent-soft: #3a2328; --gold: #dcb05a; --gold-soft: #352d1c;
+  --yes: #8ccf98; --yes-soft: #1f3324; --no: #a8a8a4; --no-soft: #2b2c29; color-scheme: dark } }
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.5; }
+.wrap { max-width: 600px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left)); padding-right: max(16px, env(safe-area-inset-right)); padding-top: max(28px, env(safe-area-inset-top)); padding-bottom: max(56px, env(safe-area-inset-bottom)); display: flex; flex-direction: column; gap: 28px; }
+h1, h2, h3 { font-family: var(--display); font-weight: 400; margin: 0; text-wrap: balance; }
+h1 { font-size: 2.1rem; line-height: 1.12; }
+h2 { font-size: 1.35rem; }
+.eyebrow { font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin: 0 0 6px; }
+.lede { margin: 0; color: var(--muted); }
+.facts { display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; margin: 0; padding: 14px 16px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; }
+.facts dt { font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 600; padding-top: 3px; }
+.facts dd { margin: 0; font-weight: 500; min-width: 0; }
+.facts .sub { color: var(--muted); font-weight: 400; font-size: .9rem; }
+.event { display: flex; flex-direction: column; gap: 14px; }
+.section { display: flex; flex-direction: column; gap: 12px; }
+.tally { display: flex; gap: 8px; flex-wrap: wrap; }
+.tally span { background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px; font-size: .9rem; font-variant-numeric: tabular-nums; }
+.tally b { font-weight: 700; }
+.claimed { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.claimed li { display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--line); }
+.claimed .dish { font-weight: 600; min-width: 0; }
+.claimed .who { color: var(--muted); font-size: .9rem; text-align: right; max-width: 48%; }
+.empty { color: var(--muted); font-style: italic; margin: 0; }
+.banner { margin: 0; padding: 10px 14px; border-radius: 8px; background: var(--gold-soft); font-size: .9rem; }
+.note { margin: 0; color: var(--muted); font-size: .9rem; }
+.family { display: flex; flex-direction: column; gap: 6px; }
+.family h3 { font-size: 1.05rem; margin-top: 8px; }
+.guest { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 12px 14px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; font: inherit; color: inherit; text-align: left; cursor: pointer; }
+.guest:hover { border-color: var(--muted); }
+.guest .name { font-weight: 600; min-width: 0; }
+.host { display: block; font-size: .7rem; text-transform: uppercase; letter-spacing: .08em; color: var(--accent); font-weight: 700; }
+.chip { flex-shrink: 0; font-size: .75rem; font-weight: 700; padding: 3px 9px; border-radius: 999px; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.chip.yes { background: var(--yes-soft); color: var(--yes); }
+.chip.no { background: var(--no-soft); color: var(--no); }
+.chip.wait { background: var(--gold-soft); color: var(--gold); }
+button:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+dialog { border: 0; padding: 0; width: min(520px, calc(100vw - 24px)); max-height: calc(100dvh - 24px); border-radius: 14px; background: var(--surface); color: var(--ink); }
+dialog::backdrop { background: rgba(10, 12, 9, .55); }
+.sheet { display: flex; flex-direction: column; gap: 16px; padding: 20px 18px; }
+.sheet h2 { font-size: 1.4rem; }
+.box { border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px; }
+.box h3 { font-family: var(--body); font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+.box ul { margin: 0; padding-left: 18px; }
+.box p { margin: 0; }
+.past b { font-weight: 600; }
+.seg { display: flex; gap: 8px; }
+.seg button { flex: 1; padding: 10px 8px; border-radius: 8px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); font: inherit; font-weight: 600; cursor: pointer; }
+.seg button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--surface); }
+label { font-size: .85rem; font-weight: 600; color: var(--muted); display: flex; flex-direction: column; gap: 4px; }
+label .opt { font-weight: 400; }
+input { font: inherit; font-size: 16px; padding: 10px 11px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--ink); width: 100%; }
+.actions { display: flex; gap: 10px; justify-content: flex-end; align-items: center; flex-wrap: wrap; }
+.btn { font: inherit; font-weight: 700; padding: 10px 18px; border-radius: 8px; border: 1px solid var(--accent); background: var(--accent); color: var(--surface); cursor: pointer; }
+.btn.ghost { background: transparent; color: var(--ink); border-color: var(--line); }
+.btn:disabled { opacity: .55; cursor: default; }
+.err { color: var(--accent); font-size: .85rem; margin: 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="event">
+    <div>
+      <p class="eyebrow">Thanksgiving 2026</p>
+      <h1>Let's eat together on Thanksgiving</h1>
+    </div>
+    <p class="lede">We'll take care of the turkey. Please bring a favorite side dish. Tap your name below to RSVP.</p>
+    <dl class="facts">
+      <dt>Date</dt><dd>Thursday, November 26</dd>
+      <dt>Time</dt><dd>2:30 PM</dd>
+      <dt>Where</dt><dd>15 Middle Valley Rd., Long Valley, NJ <span class="sub">· carpool if you can!</span></dd>
+    </dl>
+  </header>
+
+  <p class="banner" id="banner" hidden></p>
+
+  <section class="section" aria-labelledby="table-h">
+    <h2 id="table-h">On the table so far</h2>
+    <div class="tally" id="tally"></div>
+    <ul class="claimed" id="claimed"></ul>
+    <p class="empty" id="claimed-empty">No dishes claimed yet.</p>
+  </section>
+
+  <section class="section" aria-labelledby="guests-h">
+    <h2 id="guests-h">Guests</h2>
+    <p class="note">Tap your name to RSVP. Picking a dish is optional, and you can come back to change it.</p>
+    <div id="families"></div>
+  </section>
+</div>
+
+<dialog id="dlg" aria-labelledby="dlg-name">
+  <form class="sheet" id="dlg-form" method="dialog">
+    <h2 id="dlg-name"></h2>
+    <div class="box">
+      <h3>Already claimed this year</h3>
+      <ul id="dlg-claimed"></ul>
+      <p class="empty" id="dlg-claimed-empty">Nothing claimed yet.</p>
+    </div>
+    <div class="box" id="dlg-past-box">
+      <h3>What you brought before</h3>
+      <div id="dlg-past"></div>
+    </div>
+    <div class="seg" role="group" aria-label="Are you coming?">
+      <button type="button" id="dlg-yes" aria-pressed="false">We're coming</button>
+      <button type="button" id="dlg-no" aria-pressed="false">Can't make it</button>
+    </div>
+    <div id="dlg-yes-fields" hidden>
+      <div style="display:flex; flex-direction:column; gap:12px;">
+        <label for="dlg-count">How many coming
+          <input type="number" id="dlg-count" min="1" max="30" inputmode="numeric">
+        </label>
+        <label for="dlg-dish">What you're bringing <span class="opt">(optional)</span>
+          <input type="text" id="dlg-dish" maxlength="120" placeholder="Green bean casserole" autocomplete="off">
+        </label>
+      </div>
+    </div>
+    <p class="err" id="dlg-err" hidden></p>
+    <div class="actions">
+      <button type="button" class="btn ghost" id="dlg-cancel">Cancel</button>
+      <button type="submit" class="btn" id="dlg-save">Save</button>
+    </div>
+  </form>
+</dialog>
+
+<script>
+// Paste the Google script's web app URL between the quotes.
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwwQ_AKNqNI8R7BNgHWsddN3TBGvWKwX3iMEc6mvUbRpPN9cGscg4UfvzaiP-imUQVWVQ/exec";
+
+const FAMILIES = [
+  { name: "Herridge Family", people: [
+    { id: "sue-herridge", name: "Sue Herridge" },
+    { id: "cindy-bob", name: "Aunt Cindy & Uncle Bob", y2025: "Apple crisp and vegetable", y2024: "Apple crisp, sweet potato casserole" },
+    { id: "uncle-john", name: "Uncle John", y2024: "Peas" },
+    { id: "tess-frank", name: "Tess, Frank, Frankie & Dom" },
+    { id: "lauren", name: "Lauren" },
+    { id: "bobby", name: "Bobby" },
+    { id: "rj-kellie", name: "RJ & Kellie", y2024: "Broccoli casserole" },
+    { id: "jack", name: "Jack" },
+    { id: "marie-kim", name: "Marie & Kim", y2024: "Corn" }
+  ]},
+  { name: "Simonsen Family", people: [
+    { id: "erik", name: "Erik" },
+    { id: "andrew", name: "Andrew" },
+    { id: "peter-diana", name: "Uncle Peter & Diana" }
+  ]},
+  { name: "Ames Family", people: [
+    { id: "bonnylee-geoff", name: "Bonny Lee & Geoff", y2025: "Turkey" },
+    { id: "alyssa-mike", name: "Alyssa, Mike, Sophia & Penny", y2025: "Stuffing", y2024: "Milk, tea bags, seltzers, leftover containers" },
+    { id: "jeff-katy", name: "Jeff, Katy & Rylie", host: true, y2025: "Not recorded (hosts fill in missing sides)", y2024: "Caprese salad, hot apple cider (spiked)" },
+    { id: "grandpa", name: "Grandpa", y2025: "Mashed potatoes and pumpkin pie", y2024: "Pumpkin pie & sweet potato casserole" },
+    { id: "valerie-pat", name: "Aunt Valerie & Uncle Pat" },
+    { id: "vicki-frank", name: "Aunt Vicki & Uncle Frank", y2024: "Slow cooker mashed potatoes" },
+    { id: "deanna", name: "Deanna & Family", y2024: "Carrots" },
+    { id: "chris-emily", name: "Chris & Emily" },
+    { id: "stephen-giacomo", name: "Stephen Giacomo" },
+    { id: "claire-giacomo", name: "Claire Giacomo" }
+  ]}
+];
+const PEOPLE = {};
+FAMILIES.forEach(f => f.people.forEach(p => PEOPLE[p.id] = p));
+
+let replies = {};
+let current = null;
+let choice = "";
+
+const $ = id => document.getElementById(id);
+const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
+const banner = t => { $("banner").textContent = t || ""; $("banner").hidden = !t; };
+
+function claimedList() {
+  const out = [];
+  Object.keys(PEOPLE).forEach(id => {
+    const r = replies[id];
+    if (r && r.status === "yes" && r.dish) out.push({ dish: r.dish, who: PEOPLE[id].name });
+  });
+  return out;
+}
+
+function render() {
+  const list = $("claimed"); list.replaceChildren();
+  const claimed = claimedList();
+  claimed.forEach(c => { const li = el("li"); li.append(el("span", "dish", c.dish), el("span", "who", c.who)); list.append(li); });
+  $("claimed-empty").hidden = claimed.length > 0;
+
+  let people = 0, homes = 0, waiting = 0;
+  Object.keys(PEOPLE).forEach(id => {
+    const r = replies[id];
+    if (!r || !r.status) waiting++;
+    else if (r.status === "yes") { homes++; people += r.count || 0; }
+  });
+  const t = $("tally"); t.replaceChildren();
+  const pill = (n, label) => { const s = el("span"); s.append(el("b", null, String(n)), " " + label); return s; };
+  t.append(pill(people, people === 1 ? "person coming" : "people coming"), pill(homes, homes === 1 ? "household yes" : "households yes"), pill(waiting, "not replied yet"));
+
+  const root = $("families"); root.replaceChildren();
+  FAMILIES.forEach(f => {
+    const fam = el("div", "family");
+    fam.append(el("h3", null, f.name));
+    f.people.forEach(p => {
+      const r = replies[p.id];
+      const b = el("button", "guest"); b.type = "button";
+      const nm = el("span", "name");
+      if (p.host) nm.append(el("span", "host", "Hosts"));
+      nm.append(p.name);
+      let chip;
+      if (!r || !r.status) chip = el("span", "chip wait", "No reply yet");
+      else if (r.status === "no") chip = el("span", "chip no", "Can't make it");
+      else chip = el("span", "chip yes", r.count ? "Coming · " + r.count : "Coming");
+      b.append(nm, chip);
+      b.addEventListener("click", () => openFor(p.id));
+      fam.append(b);
+    });
+    root.append(fam);
+  });
+}
+
+function setChoice(v) {
+  choice = v;
+  $("dlg-yes").setAttribute("aria-pressed", String(v === "yes"));
+  $("dlg-no").setAttribute("aria-pressed", String(v === "no"));
+  $("dlg-yes-fields").hidden = v !== "yes";
+  $("dlg-err").hidden = true;
+}
+
+function openFor(id) {
+  current = id;
+  const p = PEOPLE[id], r = replies[id] || {};
+  $("dlg-name").textContent = p.name;
+  const ul = $("dlg-claimed"); ul.replaceChildren();
+  const claimed = claimedList().filter(c => c.who !== p.name);
+  claimed.forEach(c => ul.append(el("li", null, c.dish + " (" + c.who + ")")));
+  $("dlg-claimed-empty").hidden = claimed.length > 0;
+  const past = $("dlg-past"); past.replaceChildren();
+  [["2025", p.y2025], ["2024", p.y2024]].forEach(([y, d]) => {
+    if (!d) return;
+    const line = el("p", "past"); line.append(el("b", null, y + ": "), d); past.append(line);
+  });
+  if (!past.children.length) past.append(el("p", "empty", "No dishes on record."));
+  $("dlg-count").value = r.count || "";
+  $("dlg-dish").value = r.dish || "";
+  setChoice(r.status || "");
+  $("dlg-save").disabled = false; $("dlg-save").textContent = "Save";
+  $("dlg").showModal();
+}
+
+$("dlg-yes").addEventListener("click", () => setChoice("yes"));
+$("dlg-no").addEventListener("click", () => setChoice("no"));
+$("dlg-cancel").addEventListener("click", () => $("dlg").close());
+
+$("dlg-form").addEventListener("submit", async e => {
+  e.preventDefault();
+  const err = $("dlg-err");
+  if (!choice) { err.textContent = "Choose whether you're coming first."; err.hidden = false; return; }
+  const count = parseInt($("dlg-count").value, 10);
+  if (choice === "yes" && !(count >= 1 && count <= 30)) { err.textContent = "Enter how many are coming."; err.hidden = false; return; }
+  if (!SCRIPT_URL) { err.textContent = "Sign-ups aren't connected yet."; err.hidden = false; return; }
+  const save = $("dlg-save"); save.disabled = true; save.textContent = "Saving…";
+  try {
+    const res = await fetch(SCRIPT_URL, {
+      method: "POST",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify({ id: current, status: choice, count: choice === "yes" ? count : 0, dish: choice === "yes" ? $("dlg-dish").value.trim() : "" })
+    });
+    const data = await res.json();
+    if (!data.ok) throw new Error(data.error || "save failed");
+    apply(data.rows);
+    $("dlg").close();
+  } catch (x) {
+    save.disabled = false; save.textContent = "Save";
+    err.textContent = "Couldn't save. Check your connection and try again."; err.hidden = false;
+  }
+});
+
+function apply(rows) {
+  const next = {};
+  (rows || []).forEach(r => { next[r.id] = { status: r.status, count: r.count, dish: r.dish }; });
+  replies = next;
+  render();
+}
+
+async function load() {
+  render();
+  if (!SCRIPT_URL) { banner("Sign-ups aren't connected yet."); return; }
+  banner("Loading sign-ups…");
+  try {
+    const res = await fetch(SCRIPT_URL);
+    const data = await res.json();
+    apply(data.rows);
+    banner("");
+  } catch (x) {
+    banner("Couldn't load sign-ups. Check your connection and refresh the page.");
+  }
+}
+load();
+document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible" && SCRIPT_URL && !$("dlg").open) load(); });
+</script>
+</body>
+</html>
